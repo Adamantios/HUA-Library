@@ -13,7 +13,7 @@ $genre = mysqli_real_escape_string($con, $_GET['genre']);
 $price = mysqli_real_escape_string($con, $_GET['price']);
 
 $sql="insert into books (author, title, genre, price) values ('" .
-        $author . "', " . $title . , " . $genre . , " . $price . ")";
+        $author . "', '" . $title . "','" . $genre . "','" . $price . "')";
 
 if (!mysqli_query($con, $sql)) {
   die('Error: ' . mysqli_error($con));
