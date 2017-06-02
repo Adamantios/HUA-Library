@@ -394,7 +394,7 @@
 <div id="search" class="tab-content" style="display: block">
     <div class="form-books">
         <h2>Search a book</h2>
-        <form>
+        <form action="#" onsubmit="searchBook()">
             <input id="keyword" type="search" placeholder="Enter keywords..."/>
             <input type="button" value="Search" onclick="searchBook()"/>
         </form>
@@ -406,7 +406,7 @@
 <div id="add" class="tab-content">
     <div class="form-books">
         <h2>Add a new book</h2>
-        <form>
+        <form action="#">
             <input id="author" type="text" placeholder="Author"/>
             <input id="title" type="text" placeholder="Title"/>
             <select id="genre" title="Genre">
