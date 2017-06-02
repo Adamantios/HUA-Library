@@ -13,7 +13,11 @@ $sql="select * from books";
 
 $result = mysqli_query($con, $sql);
 
-echo json_encode(mysqli_fetch_array($result));
+$rows = array();
+while($r = mysqli_fetch_assoc($result))
+    $rows[] = $r;
+
+print json_encode($rows);
 
 mysqli_close($con);
 ?>
