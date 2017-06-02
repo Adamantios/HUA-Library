@@ -38,12 +38,8 @@
         }
 
         /* Change background color of buttons on hover */
-        div.tab button:hover {
+        div.tab button:hover:enabled {
             background-color: #45D6D6;
-        }
-
-        div.tab button:hover:disabled {
-            background-color: #53ffff;
         }
 
         /* Create an active/current tab-link class */
@@ -138,12 +134,12 @@
             text-transform: uppercase;
         }
 
-        .form-books input[type="button"]:hover,
-        .form-books input[type="submit"]:hover {
+        .form-books input[type="button"]:hover:enabled,
+        .form-books input[type="submit"]:hover:enabled {
             background: #34CACA linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
         }
 
-        .form-books input[type="button"]:disabled, .form-books input[type="button"]:hover:disabled {
+        .form-books input[type="button"]:disabled {
             -moz-box-shadow: inset 0 1px 0 0 #54ffff;
             -webkit-box-shadow: inset 0 1px 0 0 #53ffff;
             box-shadow: inset 0 1px 0 0 #51ffff;
