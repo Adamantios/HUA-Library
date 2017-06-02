@@ -43,7 +43,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     else
         $response['message'] = 'Success!';
 
-    print json_encode(array_values($response));
+    print json_encode($response);
 }
 
 mysqli_close($con);
