@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_POST = json_decode(file_get_contents('php://input'), true);
     $author = mysqli_real_escape_string($con, $_POST['author']);
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $genre = mysqli_real_escape_string($con, $_POST['genre']);
