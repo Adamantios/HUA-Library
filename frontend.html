@@ -245,10 +245,9 @@
                 xhr.onreadystatechange = function () {
                     if (this.readyState === 4 && this.status === 200) {
                         var response = JSON.parse(this.responseText);
-                        var result;
 
-                        if (response.size > 0) {
-                            result = "<table><thead><tr>" +
+                        if (response.length > 0) {
+                            var result = "<table><thead><tr>" +
                                 "<th>Id</th>" +
                                 "<th>Author</th>" +
                                 "<th>Title</th>" +
@@ -265,12 +264,11 @@
                             }
 
                             result += "</tbody></table>";
+                            document.getElementById('searchResult').innerHTML = result;
                         }
 
                         else
-                            result = "<h3 style='color: #27A0A0'>No books were found.</h3>";
-
-                        document.getElementById('searchResult').innerHTML = result;
+                            alert("No books were found");
                     }
                 };
 
