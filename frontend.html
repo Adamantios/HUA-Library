@@ -141,6 +141,20 @@
     </style>
 
     <script type="text/javascript">
+
+        var addBook = function () {
+            if (!document.getElementById('author').value || !document.getElementById('title').value
+                || !document.getElementById('genre').value || !document.getElementById('price').value)
+                alert('Please fill in all the fields before continuing.');
+
+            else {
+                if (priceIsValid)
+                    alert('ok');
+                else
+                    alert('Invalid price.');
+            }
+        };
+
         var priceIsValid = false;
 
         var validatePrice = function () {
@@ -222,9 +236,10 @@
     <div class="form-books">
         <h2>Add a new book</h2>
         <form>
-            <input type="text" placeholder="Author"/>
-            <input type="text" placeholder="Title"/>
-            <select title="Genre">
+            <input id="author" type="text" placeholder="Author"/>
+            <input id="title" type="text" placeholder="Title"/>
+            <select id="genre" title="Genre">
+                <option selected disabled value="">Choose genre</option>
                 <option value="science">Science fiction</option>
                 <option value="satire">Satire</option>
                 <option value="drama">Drama</option>
@@ -235,8 +250,10 @@
             </select>
             <input id="price" type="text" placeholder="Price" onkeyup="validatePrice()"/>
             <div id="hint" style="color: red; margin: 0 0 15px 15px; font-weight: bold"></div>
-            <input type="button" value="Add Book"/>
+            <input type="button" value="Add Book" onclick="addBook()"/>
         </form>
+
+        <h5 id="addResponse" style="color: #27A0A0"></h5>
     </div>
 </div>
 
