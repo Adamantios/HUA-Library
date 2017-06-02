@@ -244,7 +244,33 @@
 
                 xhr.onreadystatechange = function () {
                     if (this.readyState === 4 && this.status === 200) {
-                        console.log(JSON.parse(this.responseText));
+                        var response = JSON.parse(this.responseText);
+                        var result;
+
+                        if (response) {
+                            result = "<table><thead><tr>" +
+                                "<th>Id</th>" +
+                                "<th>Author</th>" +
+                                "<th>Title</th>" +
+                                "<th>Genre</th>" +
+                                "<th>Price</th>" +
+                                "</tr></thead><tbody class='table-hover'>";
+
+                            for (var book in response) {
+                                result += "<tr><td>" + response[book].id + "</td>" +
+                                    "<td>" + response[book].author + "</td>" +
+                                    "<td>" + response[book].title + "</td>" +
+                                    "<td>" + response[book].genre + "</td>" +
+                                    "<td>" + response[book].price + "</td></tr>";
+                            }
+
+                            result += "</tbody></table>";
+                        }
+
+                        else
+                            result = "<h3 style='color: #27A0A0'>No books were found.</h3>";
+
+                        document.getElementById('searchResult').innerHTML = result;
                     }
                 };
 
@@ -373,6 +399,8 @@
             <input type="button" value="Search" onclick="searchBook()"/>
         </form>
     </div>
+
+    <div id="searchResult"></div>
 </div>
 
 <div id="add" class="tab-content">
