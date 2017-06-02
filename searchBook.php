@@ -9,8 +9,8 @@ if (!$con) {
 
 mysqli_select_db($con, $dbName);
 
-$sql="select * from books where author like %" . 'rings' .
-                                           "% or title like %" . 'rings' .
+$sql="select * from books where author like %rings%" .
+                                           " or title like %" . 'rings' .
                                            "% or genre like %" . 'rings' .
                                            "% or price like %" . 'rings' . "%";
 
