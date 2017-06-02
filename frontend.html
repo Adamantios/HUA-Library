@@ -165,8 +165,15 @@
                     xhr.withCredentials = true;
 
                     xhr.onreadystatechange = function () {
-                        if (this.readyState === 4 && this.status === 200)
+                        if (this.readyState === 4 && this.status === 200) {
+                            document.getElementById('addBookButton').disabled = true;
                             document.getElementById('addResponse').innerHTML = JSON.parse(this.responseText).message;
+
+                            setTimeout(function () {
+                                document.getElementById('addResponse').innerHTML = "";
+                                document.getElementById('addBookButton').disabled = false;
+                            }, 5000)
+                        }
                     };
 
                     xhr.open("POST", "http://hua-library.azurewebsites.net/books");
@@ -275,7 +282,7 @@
             </select>
             <input id="price" type="text" placeholder="Price" onkeyup="validatePrice()"/>
             <div id="hint" style="color: red; margin: 0 0 15px 15px; font-weight: bold"></div>
-            <input type="button" value="Add Book" onclick="addBook()"/>
+            <input id="addBookButton" type="button" value="Add Book" onclick="addBook()"/>
         </form>
 
         <h5 id="addResponse" style="color: #27A0A0"></h5>
