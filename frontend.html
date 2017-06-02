@@ -154,20 +154,24 @@
             else {
 
                 if (priceIsValid) {
-                    var data = new FormData();
-                    data.append("author", author);
-                    data.append("title", title);
-                    data.append("genre", genre);
-                    data.append("price", price);
+                    var data = JSON.stringify({
+                        "author": author,
+                        "title": title,
+                        "genre": genre,
+                        "price": price
+                    });
 
                     var xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
 
                     xhr.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200)
-                            document.getElementById("addResponse").innerHTML = 'The book has been successfully added.';
+                            document.getElementById('addResponse').innerHTML = this.responseText;
                     };
 
                     xhr.open("POST", "http://hua-library.azurewebsites.net/books");
+                    xhr.setRequestHeader("content-type", "application/json");
+
                     xhr.send(data);
                 }
 
