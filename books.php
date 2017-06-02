@@ -39,7 +39,14 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       die('Error: ' . mysqli_error($con));
     }
 
-    echo "1 record added";
+    $response = array();
+
+    if ($rows)
+        $response['message'] = 'The book has been successfully added.');
+    else
+        $response['message'] = 'Something went wrong. Please try again!');
+
+    print json_encode($response);
 }
 
 mysqli_close($con);
