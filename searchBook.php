@@ -16,7 +16,7 @@ $sql="select * from books where author like %" . $_GET["pattern"] .
 
 $result = mysqli_query($con, $sql);
 
-echo json_encode(mysqli_fetch_array($result));
+echo json_encode($result);
 
 mysqli_close($con);
 ?>
