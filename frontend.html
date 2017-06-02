@@ -149,6 +149,26 @@
     </style>
 
     <script type="text/javascript">
+        var searchBook = function () {
+            var key = document.getElementById('keyword').value;
+
+            if (!key)
+                alert('Please enter a keyword before continuing.');
+
+            else {
+                var xhr = new XMLHttpRequest();
+
+                xhr.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        console.log(JSON.parse(this.responseText));
+                    }
+                };
+
+                xhr.open("GET", "http://hua-library.azurewebsites.net/books?pattern=" + key);
+                xhr.send();
+            }
+        };
+
 
         var addBook = function () {
             var author = document.getElementById('author').value;
@@ -170,7 +190,6 @@
                     });
 
                     var xhr = new XMLHttpRequest();
-                    xhr.withCredentials = true;
 
                     xhr.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200) {
@@ -186,7 +205,6 @@
 
                     xhr.open("POST", "http://hua-library.azurewebsites.net/books");
                     xhr.setRequestHeader("content-type", "application/json");
-
                     xhr.send(data);
                 }
 
@@ -267,7 +285,8 @@
     <div class="form-books">
         <h2>Search a book</h2>
         <form>
-            <input type="search" placeholder="Search..."/>
+            <input id="keyword" type="search" placeholder="Enter keywords..."/>
+            <input type="button" value="Search" onclick="searchBook()"/>
         </form>
     </div>
 </div>
