@@ -8,11 +8,12 @@ if (!$con) {
 }
 
 mysqli_select_db($con, $dbName);
+$pattern = mysqli_real_escape_string($con, $_GET['pattern']);
 
-$sql="select * from books where author like '%" . $_GET['pattern'] .
-                                           "%' or title like '%" . $_GET['pattern'] .
-                                           "%' or genre like '%" . $_GET['pattern'] .
-                                           "%' or price like '%" . $_GET['pattern'] . "%'";
+$sql="select * from books where author like '%" . $pattern .
+                                           "%' or title like '%" . $pattern .
+                                           "%' or genre like '%" . $pattern .
+                                           "%' or price like '%" . $pattern . "%'";
 
 $result = mysqli_query($con, $sql);
 
