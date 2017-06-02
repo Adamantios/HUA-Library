@@ -166,7 +166,7 @@
 
                     xhr.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200)
-                            document.getElementById('addResponse').innerHTML = this.responseText;
+                            document.getElementById('addResponse').innerHTML = JSON.parse(this.responseText).message;
                     };
 
                     xhr.open("POST", "http://hua-library.azurewebsites.net/books");
