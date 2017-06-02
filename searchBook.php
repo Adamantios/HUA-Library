@@ -9,7 +9,7 @@ if (!$con) {
 
 mysqli_select_db($con, $dbName);
 
-$sql="select * from books where author like %" . '$_GET['pattern']' .
+$sql="select * from books where author like %" . $_GET['pattern'] .
                                            "% or title like %" . $_GET['pattern'] .
                                            "% or genre like %" . $_GET['pattern'] .
                                            "% or price like %" . $_GET['pattern'] . "%";
@@ -21,6 +21,7 @@ while($r = mysqli_fetch_assoc($result))
     $rows[] = $r;
 
 print json_encode($rows);
+print $_GET['pattern'];
 
 mysqli_close($con);
 ?>
