@@ -267,8 +267,10 @@
                             document.getElementById('searchResult').innerHTML = result;
                         }
 
-                        else
+                        else {
+                            document.getElementById('searchResult').innerHTML = "";
                             alert("No books were found");
+                        }
                     }
                 };
 
