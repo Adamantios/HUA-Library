@@ -35,6 +35,10 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql="insert into books (author, title, genre, price) values ('" .
             $author . "', '" . $title . "','" . $genre . "','" . $price . "')";
 
+    if (!mysqli_query($con, $sql)) {
+        die('Error: ' . mysqli_error($con));
+    }
+
     echo "1 record added";
 }
 
