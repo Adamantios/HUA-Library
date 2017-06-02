@@ -9,7 +9,7 @@ if (!$con) {
 
 mysqli_select_db($con, $dbName);
 
-$sql="select * from books";
+$sql="select * from `books`";
 
 $result = mysqli_query($con, $sql);
 
