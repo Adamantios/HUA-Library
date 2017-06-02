@@ -9,7 +9,7 @@ if (!$con) {
 
 mysqli_select_db($con, $dbName);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $pattern = mysqli_real_escape_string($con, $_GET['pattern']);
 
     $sql="select * from books where author like '%" . $pattern .
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     print json_encode($rows);
 }
 
-else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $author = mysqli_real_escape_string($con, $_POST['author']);
     $title = mysqli_real_escape_string($con, $_POST['title']);
     $genre = mysqli_real_escape_string($con, $_POST['genre']);
