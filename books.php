@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $pattern = mysqli_real_escape_string($con, $_GET['pattern']);
 
     $sql="select * from books where author like '%" . $pattern .
-                                               "%' or title like '%" . $pattern .
-                                               "%' or genre like '%" . $pattern .
-                                               "%' or price like '%" . $pattern . "%'";
+                                                "%' or title like '%" . $pattern .
+                                                "%' or genre like '%" . $pattern .
+                                                "%' or price like '%" . $pattern . "%'";
 
     $result = mysqli_query($con, $sql);
 
