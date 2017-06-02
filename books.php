@@ -38,10 +38,10 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = array();
 
     if (!mysqli_query($con, $sql))
-        $response['message'] = 'Error!';
+        $response['message'] = 'Something went wrong! Please try again.';
 
     else
-        $response['message'] = 'Success!';
+        $response['message'] = 'The book has been successfully added.';
 
     print json_encode($response);
 }
