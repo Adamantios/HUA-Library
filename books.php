@@ -27,6 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // set content type header to application json.
+    header('Content-Type: application/json');
+
     // decode JSON data.
     $_POST = json_decode(file_get_contents('php://input'), true);
     $author = mysqli_real_escape_string($con, $_POST['author']);
