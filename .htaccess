@@ -4,5 +4,4 @@ RewriteEngine on
 #             =>
 #             http://hua-library.azurewebsites.net/books?pattern=test
 
-RewriteCond %{QUERY_STRING} (^|&)pattern=test($|&)
-RewriteRule ^books\.php$ /books?pattern=test&%{QUERY_STRING}
+RewriteRule ^books\.php$ /books?&%{QUERY_STRING}
