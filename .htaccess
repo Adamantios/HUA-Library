@@ -1,7 +1,0 @@
-RewriteEngine on
-
-# Rewrite --- http://hua-library.azurewebsites.net/books.php?pattern=test
-#             =>
-#             http://hua-library.azurewebsites.net/books?pattern=test
-
-RewriteRule ^books\.php$ /books?&%{QUERY_STRING}
