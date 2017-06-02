@@ -46,7 +46,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     else
         $response['message'] = 'Something went wrong. Please try again!');
 
-    print json_encode($response);
+    print json_encode(array_values($response));
 }
 
 mysqli_close($con);
