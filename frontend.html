@@ -143,13 +143,34 @@
     <script type="text/javascript">
 
         var addBook = function () {
-            if (!document.getElementById('author').value || !document.getElementById('title').value
-                || !document.getElementById('genre').value || !document.getElementById('price').value)
+            var author = document.getElementById('author').value;
+            var title = document.getElementById('title').value;
+            var genre = document.getElementById('genre').value;
+            var price = document.getElementById('price').value;
+
+            if (!author || !title || !genre || !price)
                 alert('Please fill in all the fields before continuing.');
 
             else {
-                if (priceIsValid)
-                    alert('ok');
+
+                if (priceIsValid) {
+                    var data = new FormData();
+                    data.append("author", author);
+                    data.append("title", title);
+                    data.append("genre", genre);
+                    data.append("price", price);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200)
+                            document.getElementById("addResponse").innerHTML = 'The book has been successfully added.';
+                    };
+
+                    xhr.open("POST", "http://hua-library.azurewebsites.net/books");
+                    xhr.send(data);
+                }
+
                 else
                     alert('Invalid price.');
             }
